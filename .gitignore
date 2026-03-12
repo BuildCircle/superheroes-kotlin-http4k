@@ -1,0 +1,8 @@
+# Build output
+build/
+.gradle/
+.kotlin/
+
+# IntelliJ IDEA
+.idea/
+*.iml
