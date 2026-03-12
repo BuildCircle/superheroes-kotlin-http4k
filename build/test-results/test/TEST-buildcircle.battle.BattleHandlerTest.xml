@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="buildcircle.battle.BattleHandlerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-03-12T14:46:25.838Z" hostname="Yoans-MacBook-Pro.local" time="0.28">
+  <properties/>
+  <testcase name="returns the winner when hero has a higher score than villain()" classname="buildcircle.battle.BattleHandlerTest" time="0.28"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
