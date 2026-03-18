@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
@@ -18,7 +18,7 @@ buildscript {
 
 kotlin {
     jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
@@ -34,7 +34,7 @@ tasks {
     withType<KotlinJvmCompile>().configureEach {
         compilerOptions {
             allWarningsAsErrors.set(false)
-            jvmTarget.set(JVM_21)
+            jvmTarget.set(JVM_17)
             freeCompilerArgs.add("-jvm-default=enable")
         }
     }
@@ -44,14 +44,14 @@ tasks {
     }
 
     java {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
 dependencies {
 
-    implementation(platform("org.http4k:http4k-bom:6.33.0.0"))
+    implementation(platform("org.http4k:http4k-bom:5.46.0.0"))
     implementation("org.http4k:http4k-client-apache-async")
     implementation("org.http4k:http4k-config")
     implementation("org.http4k:http4k-core")
