@@ -16,10 +16,9 @@ import org.http4k.format.Jackson
 import org.http4k.lens.Query
 
 fun battleHandler(getCharacters: CharactersProvider): HttpHandler {
-    val heroQuery = Query.required("hero")
-    val villainQuery = Query.required("villain")
-
     return { request ->
+        val heroQuery = Query.required("hero")
+        val villainQuery = Query.required("villain")
         val heroName = heroQuery(request)
         val villainName = villainQuery(request)
         getCharacters()
@@ -28,14 +27,8 @@ fun battleHandler(getCharacters: CharactersProvider): HttpHandler {
                 val hero = characters.find { it.name == heroName }
                 val villain = characters.find { it.name == villainName }
 
-                when {
-                    hero == null -> Failure(Response(NOT_FOUND).body("Hero '$heroName' not found"))
-                    villain == null -> Failure(Response(NOT_FOUND).body("Villain '$villainName' not found"))
-                    else -> {
-                        val winner = if (hero.score > villain.score) hero else villain
-                        Success(winner)
-                    }
-                }
+                val winner = if (hero!!.score > villain!!.score) hero else villain
+                Success(winner)
             }
             .fold(
                 { Response(OK).body(Jackson.asFormatString(it))},
